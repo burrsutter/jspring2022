@@ -11,12 +11,10 @@ spec:
     metadata:
       labels:
         app: myapplication
-        env: dev
     spec:
       containers:
       - name: myapplication
         image: docker.io/burrsutter/myapplication-spring:1.0.0
-        imagePullPolicy: Always
         env:
         - name: GREETING
           value: "What?"        
@@ -29,16 +27,16 @@ spec:
           limits:
             memory: "400Mi"
             cpu: "1000m" # 1 core
-        livenessProbe:
-          httpGet:
-              port: 8080
-              path: /alive
-          initialDelaySeconds: 10
-          periodSeconds: 5
-          timeoutSeconds: 2
-        readinessProbe:
-          httpGet:  
-            path: /health
-            port: 8080
-          initialDelaySeconds: 10
-          periodSeconds: 3
+        # livenessProbe:
+        #   httpGet:
+        #       port: 8080
+        #       path: /alive
+        #   initialDelaySeconds: 10
+        #   periodSeconds: 5
+        #   timeoutSeconds: 2
+        # readinessProbe:
+        #   httpGet:  
+        #     path: /health
+        #     port: 8080
+        #   initialDelaySeconds: 10
+        #   periodSeconds: 3
